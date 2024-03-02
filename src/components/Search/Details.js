@@ -7,6 +7,7 @@ import theMovieDb from '../Utils/themoviedb';
 function Details() {
     // Uses useState() to change the state of movieDetails to be equal to the parsed data
     const [movieDetails, setMovieDetails] = useState(null);
+
     // Gets URL
     const location = useLocation();
 
@@ -38,6 +39,11 @@ function Details() {
                     <h1>{movieDetails.original_title}</h1>
                     <img src={`https://image.tmdb.org/t/p/w200${movieDetails.poster_path}`} alt="Movie Poster" />
                     <div>{movieDetails.overview}</div>
+                    <div>Release year: {movieDetails.release_date.substring(0,4)}</div>
+                    <div>
+                        Genres: {movieDetails.genres.slice(0,3).map(genre => genre.name).join(', ')}
+                    </div>
+
                 </>
             )}
         </div>

@@ -17,7 +17,7 @@ export const fetchAccountData = async () => {
     data automatically in JSON format
     */
   try {
-    const response = await axios.get(`${baseURL}/data`);
+    const response = await axios.get(`${baseURL}/accounts`);
     return response.data;
   } catch (error) {
     console.error('Error fetching data:', error);
@@ -30,12 +30,12 @@ export const addNewAccount = async (newData) => {
     Add new account to server
     Create new object of a user, pass in params like a JSON file: 
         username: username value,
-        firstname: username value,
+        firstname: firstname value,
         etc.
     Then pass that object into addNewAccount
     */
   try {
-    const response = await axios.post(`${baseURL}/data`, newData);
+    const response = await axios.post(`${baseURL}/accounts`, newData);
     return response.data;
   } catch (error) {
     console.error('Error adding data:', error);

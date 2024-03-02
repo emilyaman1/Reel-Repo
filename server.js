@@ -24,15 +24,19 @@ db.connect(err => {
     }
     console.log('Connected to database');
 });
-
-app.get('/api/data', (req, res) => {
+/*
+TODO: 
+Change the accounts to query api/accounts directly, change client side
+add post and get method for movies table when created
+*/
+app.get('/api/accounts', (req, res) => {
     db.query('SELECT * FROM accounts', (error, results) => {
         if (error) throw error;
         res.json(results);
     });
 });
 
-app.post('/api/data', (req, res) => {
+app.post('/api/accounts', (req, res) => {
     const newData = req.body;
     db.query('INSERT INTO accounts SET ?', newData, (error, results) => {
         if (error) throw error;
