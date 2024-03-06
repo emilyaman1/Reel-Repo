@@ -22,7 +22,7 @@ function App() {
           />
           <Route
             exact
-            path="/details/movieId/:id"
+            path="/details/:media-type/:id"
             element={<Details />}
             />
             <Route

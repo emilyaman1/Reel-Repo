@@ -35,6 +35,27 @@ app.get('/api/accounts', (req, res) => {
         res.json(results);
     });
 });
+app.get('/api/accounts/usernames', (req, res) => {
+    db.query('SELECT username FROM accounts', (error, results) => {
+        if (error) {
+            console.error('Error fetching usernames:', error);
+            res.status(500).send('Error fetching usernames');
+        } else {
+            res.json(results);
+        }
+    });
+});
+app.get('/api/accounts/emails', (req, res) => {
+    db.query('SELECT email FROM accounts', (error, results) => {
+        if (error) {
+            console.error('Error fetching emails:', error);
+            res.status(500).send('Error fetching emails');
+        } else {
+            res.json(results);
+        }
+    });
+});
+
 
 app.post('/api/accounts', (req, res) => {
     const newData = req.body;
@@ -44,6 +65,22 @@ app.post('/api/accounts', (req, res) => {
     });
 });
 
+app.delete('/api/accounts/:username', (req, res) => {
+    const username = req.params.username;
+    db.query('DELETE FROM accounts WHERE username = ?', username, (error, results) => {
+        if (error) {
+            console.error('Error deleting account:', error);
+            res.status(500).send('Error deleting account');
+        } else {
+            // Check if any rows were affected, indicating successful deletion
+            if (results.affectedRows > 0) {
+                res.send('Account deleted successfully');
+            } else {
+                res.status(404).send('Account not found');
+            }
+        }
+    });
+});
 app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);
 });
