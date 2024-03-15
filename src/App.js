@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Search from './components/Search/Search';
 import Details from './components/Search/Details';
 import Home from './components/Home/Home';
+import AccountDeletion from './components/AccountDeletion';
 
 // Used to move around website, different pages
 function App() {
@@ -22,13 +23,18 @@ function App() {
           />
           <Route
             exact
-            path="/details/movieId/:id"
+            path="/details/:media-type/:id"
             element={<Details />}
             />
             <Route
             exact
             path="/search"
             element={<Search />}
+            />
+            <Route
+            exact
+            path="/account-deletion"
+            element={<AccountDeletion />}
             />
           
         </Routes>

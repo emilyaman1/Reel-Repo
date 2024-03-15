@@ -24,6 +24,24 @@ export const fetchAccountData = async () => {
     throw error;
   }
 };
+export const fetchUsernames = async () => {
+  try {
+      const response = await axios.get(`${baseURL}/accounts/usernames`);
+      return response.data; // Returns an array of objects with username
+  } catch (error) {
+      console.error('Error fetching usernames:', error);
+      throw error;
+  }
+};
+export const fetchEmails = async () => {
+  try {
+      const response = await axios.get(`${baseURL}/accounts/emails`);
+      return response.data; // Returns an array of objects with email
+  } catch (error) {
+      console.error('Error fetching emails:', error);
+      throw error;
+  }
+};
    
 export const addNewAccount = async (newData) => {
    /*
@@ -40,5 +58,15 @@ export const addNewAccount = async (newData) => {
   } catch (error) {
     console.error('Error adding data:', error);
     throw error;
+  }
+};
+
+export const deleteAccount = async (username) => {
+  try {
+      const response = await axios.delete(`${baseURL}/accounts/${username}`);
+      return response.data;
+  } catch (error) {
+      console.error('Error deleting account:', error);
+      throw error;
   }
 };
