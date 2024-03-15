@@ -24,11 +24,7 @@ db.connect(err => {
     }
     console.log('Connected to database');
 });
-/*
-TODO: 
-Change the accounts to query api/accounts directly, change client side
-add post and get method for movies table when created
-*/
+
 app.get('/api/accounts', (req, res) => {
     db.query('SELECT * FROM accounts', (error, results) => {
         if (error) throw error;

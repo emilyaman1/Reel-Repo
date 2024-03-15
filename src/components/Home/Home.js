@@ -10,6 +10,7 @@ function Home() {
         <div>
             <h1>Temp Homepage</h1>
             <button onClick={()=>navigate('/search')}>Search</button>
+            <button onClick={()=>navigate('/account-deletion')}>Account Deletion</button>
         </div>
     );
 }
