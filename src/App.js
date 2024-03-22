@@ -5,6 +5,7 @@ import Details from './components/Search/Details';
 import Home from './components/Home/Home';
 import AccountDeletion from './components/AccountDeletion';
 
+
 // Used to move around website, different pages
 function App() {
   //Each Route is a new page. Path = what you want the extension to be. "/" is the start up page
@@ -36,7 +37,7 @@ function App() {
             path="/account-deletion"
             element={<AccountDeletion />}
             />
-          
+        
         </Routes>
       </BrowserRouter>
     </>
